@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #bootstrap
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails'
-
+gem "figaro"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -51,3 +51,6 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  gem 'mysql2'
+end
