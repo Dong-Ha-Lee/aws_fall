@@ -1,0 +1,22 @@
+<h1>Title: <%=@e.title%></h1>
+<%=link_to "Back", "/days"%><br>
+<%=link_to "Delete", "/days/#{@e.id}", method:"delete"%>
+<hr>
+<h3>Checklists</h3>
+
+<% @c.each do |c|%>
+<%if c.done == false%>
+<p><%=c.title%><%=link_to "[done]", "/checklists/#{c.id}/#{c.done}",method:"put"%><%=link_to "[x]", "/checklists/#{c.id}",method:"delete"%></p>
+<%else%>
+<p>done<%=link_to "[redo]", "/checklists/#{c.id}/#{c.done}",method:"put"%><%=link_to "[x]", "/checklists/#{c.id}",method:"delete"%></p>
+<%end%>
+<%end%>
+
+<hr>
+
+<h3>Add Checklists</h3>
+<%= form_tag("/checklists/#{@e.id}", method: "post") do %>
+  <%= label_tag(:title, "What to do? =>") %>
+  <%= text_field_tag(:title) %>
+  <%= submit_tag("Add to list") %>
+<% end %>
